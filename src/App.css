@@ -93,3 +93,10 @@ li:hover {
     background: rgba(255, 255, 255, 0.25);
     transform: translateX(5px);
 }
+
+li button{
+    cursor: pointer;
+    float: right;
+    margin-top: -10px;
+    transition: all 0.3s ease;
+}
