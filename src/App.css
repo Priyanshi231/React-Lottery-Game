@@ -1,8 +1,21 @@
-.board{
-    font-size: 20px;
+body{
+    background-color: #151515;
+    margin-top: 100px;  
+    color: white;
 }
 button{
-    font-size: 20px;
+    font-size: 15px;
     padding: 10px;
     margin: 10px;
+    width: 100px;
+}
+input{
+    font-size: 15px;
+    padding: 10px;
+    margin: 10px;
+}  
+
+h2{
+    font-size: 30px;
+    margin: 20px;
 }
