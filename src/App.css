@@ -1,25 +1,37 @@
 body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin: 0;
-    padding: 20px;
+    padding: 15px;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
 }
 
 .todo-container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: 30px;
+    padding: 25px;
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 h2 {
-    font-size: 32px;
-    margin: 0 0 25px 0;
+    font-size: 28px;
+    margin: 0 0 20px 0;
     text-align: center;
     font-weight: 600;
 }
@@ -28,10 +40,12 @@ h2 {
     display: flex;
     gap: 10px;
     margin-bottom: 25px;
+    flex-wrap: wrap;
 }
 
 input {
     flex: 1;
+    min-width: 150px;
     font-size: 16px;
     padding: 12px 15px;
     border: none;
@@ -52,8 +66,8 @@ input:focus {
 }
 
 button {
-    font-size: 16px;
-    padding: 12px 25px;
+    font-size: 14px;
+    padding: 10px 20px;
     border: none;
     border-radius: 8px;
     background: #ff6b6b;
@@ -61,6 +75,7 @@ button {
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 button:hover {
@@ -76,17 +91,21 @@ button:active {
 ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 20px 0;
 }
 
 li {
     background: rgba(255, 255, 255, 0.15);
     display: flex;
-    padding: 20px 20px;
-    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 12px;
     border-radius: 8px;
     border-left: 4px solid #ff6b6b;
-    font-size: 16px;
+    font-size: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 li:hover {
@@ -94,10 +113,153 @@ li:hover {
     transform: translateX(5px);
 }
 
-li button{
+li span {
+    flex: 1;
+    min-width: 120px;
+    word-break: break-word;
+}
+
+li button {
     cursor: pointer;
-    margin-top: -10px;
-    justify-content: center;
+    font-size: 12px;
+    padding: 8px 12px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+li button:first-of-type {
+    background: #4CAF50;
+}
+
+li button:first-of-type:hover {
+    background: #45a049;
+}
+
+li button:last-of-type {
+    background: #f44336;
+}
+
+li button:last-of-type:hover {
+    background: #da190b;
+}
+
+.mark-all-button {
+    width: 100%;
+    background: #4CAF50;
+    padding: 14px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.mark-all-button:hover {
+    background: #45a049;
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .todo-container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    .input-group {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    input {
+        min-width: 100px;
+        font-size: 15px;
+        padding: 10px 12px;
+    }
+
+    button {
+        font-size: 13px;
+        padding: 9px 16px;
+    }
+
+    li {
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        gap: 8px;
+    }
+
+    li button {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    .todo-container {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .input-group {
+        gap: 6px;
+        margin-bottom: 18px;
+        flex-direction: column;
+    }
+
+    input {
+        min-width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .input-group button {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    li {
+        padding: 10px;
+        margin-bottom: 8px;
+        font-size: 13px;
+        gap: 6px;
+    }
+
+    li span {
+        min-width: 80px;
+    }
+
+    li button {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+
+    .mark-all-button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
     margin-right: -15px;
     margin-left: 30px;
     transition: all 0.3s ease;

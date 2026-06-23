@@ -38,29 +38,41 @@ export default function Todo() {
     
     return (
         <div className="todo-container">
+            <h2>Todo List</h2>
             <div className="input-group">
-                <input placeholder="Add a task" 
-                 value = {newTodo} onChange={updateTodoValue}></input>
+                <input 
+                    type="text"
+                    placeholder="Add a task" 
+                    value={newTodo} 
+                    onChange={updateTodoValue}
+                    onKeyPress={(e) => e.key === 'Enter' && addNewTask()}
+                />
                 <button onClick={addNewTask}>ADD</button>
             </div>
    
-            <h2> Todo List </h2>
-                <ul>
-                {
-                    todos.map((todo) => (
-                        <li key={todo.id}>
-                        <span style = {todo.isDone ? {textDecorationLine: "line-through", textDecorationColor: "black"} : {}}>{todo.task}</span>
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id}>
+                        <span style={{
+                            textDecorationLine: todo.isDone ? "line-through" : "none",
+                            textDecorationColor: todo.isDone ? "black" : "transparent",
+                            opacity: todo.isDone ? 0.6 : 1
+                        }}>
+                            {todo.task}
+                        </span>
                         <button onClick={() => markAsDone(todo.id)}>
-                            Mark as Done
+                            Mark Done
                         </button>
-                        <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
+                        <button onClick={() => deleteTodo(todo.id)}>
+                            Delete
+                        </button>
+                    </li>
+                ))}
+            </ul>
 
-                <button onClick={() => markAllAsDone()} style ={{ backgroundColor: "#4CAF50", color: "white", border: "none",marginLeft: "130px"}}>
-                    Mark  all as Done
-                </button>
+            <button className="mark-all-button" onClick={() => markAllAsDone()}>
+                Mark All as Done
+            </button>
         </div>
     );
 
